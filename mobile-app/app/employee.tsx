@@ -32,7 +32,6 @@ export default function EmployeesScreen() {
   useEffect(() => {
     getEmployees(currentPage, ITEMS_PER_PAGE).then(([employees, meta]) => {
       SetEmployees(employees);
-      console.log("Meta data:", meta);
       setCurrentPage(meta.current_page || 1);
       setTotalPages(meta.last_page || 1);
     }).catch((error) => {
@@ -93,8 +92,6 @@ export default function EmployeesScreen() {
       const newEmployee = await createEmployee({
         name: name.trim(),
       });
-
-      console.log("New employee created:", newEmployee);
 
       // Add new employee to the list
       refreshEmployees(currentPage, ITEMS_PER_PAGE);
